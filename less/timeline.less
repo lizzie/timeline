@@ -108,14 +108,17 @@ body {
 
       .tl-unit {
         position: relative;
-        float: left;
-        width: @ContainerWidth/2 - @UnitPadding/2;
+
 
         .tl-unit-content {
           padding: 3px;
           border: 1px solid @BorderColor;
+          margin-bottom: 10px;
           background: white;
           .border-radius(3px);
+        }
+        .tl-unit-arrow, .tl-unit-bullet {
+          visibility: hidden;
         }
         .tl-unit-arrow, .tl-unit-arrow i {
           .inline-block();
@@ -140,52 +143,6 @@ body {
           background: @DarkBlue;
           .border-radius(5px);
         }
-
-        &.tl-unit-l {
-          .tl-unit-arrow, .tl-unit-arrow i {
-            border-right: none;
-            border-left: @ArrowSize solid @BorderColor;
-          }
-          .tl-unit-arrow {
-            right: -@ArrowSize;
-            top: @LeftArrowTop;
-          }
-
-          .tl-unit-arrow i {
-            left: -@ArrowSize - 1;
-            border-left-color: white;
-          }
-
-          .tl-unit-bullet {
-            top: @LeftArrowTop;
-            right: -(@UnitPadding/2+@BulletSize/2);
-          }
-        }
-        &.tl-unit-r {
-          float: right;
-
-          .tl-unit-arrow, .tl-unit-arrow i {
-            border-left: none;
-            border-right: @ArrowSize solid @BorderColor;
-          }
-          .tl-unit-arrow {
-            left: -@ArrowSize;
-            top: @RightArrowTop;
-          }
-
-          .tl-unit-arrow i {
-            left: 1px;
-            border-right-color: white;
-          }
-
-          .tl-unit-bullet {
-            top: @RightArrowTop;
-            left: -(@UnitPadding/2+@BulletSize/2);
-          }
-        }
-
-
-
 
         /* custom style */
         @CustomMargin: 10px;
@@ -230,6 +187,56 @@ body {
           }
         }
       }
+      .tl-unit-r, .tl-unit-l {
+        float: left;
+        .tl-unit-arrow, .tl-unit-bullet {
+          visibility: visible;
+        }
+      }
+      .tl-unit-l {
+        width: @ContainerWidth/2 - @UnitPadding/2;
+        .tl-unit-arrow, .tl-unit-arrow i {
+          border-right: none;
+          border-left: @ArrowSize solid @BorderColor;
+        }
+        .tl-unit-arrow {
+          right: -@ArrowSize;
+          top: @LeftArrowTop;
+        }
+
+        .tl-unit-arrow i {
+          left: -@ArrowSize - 1;
+          border-left-color: white;
+        }
+
+        .tl-unit-bullet {
+          top: @LeftArrowTop;
+          right: -(@UnitPadding/2+@BulletSize/2);
+        }
+      }
+      .tl-unit-r {
+        width: @ContainerWidth/2 - @UnitPadding/2;
+
+        .tl-unit-arrow, .tl-unit-arrow i {
+          border-left: none;
+          border-right: @ArrowSize solid @BorderColor;
+        }
+        .tl-unit-arrow {
+          left: -@ArrowSize;
+          top: @RightArrowTop;
+        }
+
+        .tl-unit-arrow i {
+          left: 1px;
+          border-right-color: white;
+        }
+
+        .tl-unit-bullet {
+          top: @RightArrowTop;
+          left: -(@UnitPadding/2+@BulletSize/2);
+        }
+      }
+
     }
 
     .tl-ft {
