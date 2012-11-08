@@ -8,21 +8,29 @@
     <link rel="stylesheet" href="css/timeline.css" />
 </head>
 <body>
-<div id="timeline" class="tl-container">
-
-</div>
+<div id="timeline" class="tl-container"></div>
+<ul class="tl-navigator" id="timeline-nav"></ul>
 <script id="tl_block_tpl" type="text/template">
-    {{#data}}
-    <div class="tl-block">
-        <div class="tl-hd"><h3 id="tl-header-{{year}}-{{month}}">{{key}}{{keyUnit}}</h3></div>
+    {{#block}}
+    <div class="tl-block" id="tl-header-{{^month}}{{year}}{{/month}}{{#month}}{{month}}{{/month}}">
+        <div class="tl-hd"><h3>{{key}}</h3></div>
         <ol class="tl-bd tl-clear">
-            <li aria-hidden="true" class="tl-spine"><a href="#"><i></i></a></li>
-            {{#unit}}
-            <li class="tl-unit {{#_isLeft}}tl-unit-l{{/_isLeft}} {{#_isRight}}tl-unit-r{{/_isRight}} ">
-                <div class="tl-unit-content tl-unit-custom" data-id="{{id}}">
+            <li aria-hidden="true" class="tl-spine"><a href="#"><i data-action="doAdd"></i></a></li>
+        </ol>
+    </div>
+    {{/block}}
+    {{^block}}
+    <div class="tl-block">
+        <div class="tl-ft tl-loading" data-action="doLike"></div>
+    </div>
+    {{/block}}
+</script>
+<script id="tl_unit_tpl" type="text/template">
+            <li class="tl-unit {{#_column}}tl-unit-{{_column}}{{/_column}}" data-id="{{id}}">
+                <div class="tl-unit-content tl-unit-custom">
                     <!-- unit content custom START -->
                     {{#title}}<p class="title">{{title}}</p>{{/title}}
-                    {{#img_url}}<p class="pic"><img src="{{img_url}}" width="{{img_width}}" height="{{img_height}}"/></p>{{/img_url}}
+                    {{#img_url}}<p class="pic"><img src="{{img_url}}" width="{{_img_width}}" height="{{_img_height}}"/></p>{{/img_url}}
                     {{#desc}}<p class="desc">{{desc}}</p>{{/desc}}
                     <p class="meta"><span data-action="doLike">喜欢</span><span class="dot">&dot;</span><span data-action="doComment">评论</span></p>
                     <!-- unit content custom END -->
@@ -30,16 +38,18 @@
                 <b class="tl-unit-arrow"><i></i></b>
                 <b class="tl-unit-bullet"></b>
             </li>
-            {{/unit}}
             <!-- todo -->
-        </ol>
-    </div>
-    {{/data}}
-    {{^data}}
-    <div class="tl-block">
-        <div class="tl-ft tl-loading" data-action="doLike"></div>
-    </div>
-    {{/data}}
+</script>
+<script id="tl_navigator_tpl" type="text/template">
+    {{#block}}
+        <li><a href="#tl-header-{{^month}}{{year}}{{/month}}{{#month}}{{month}}{{/month}}">{{key}}</a>
+        {{#children}}
+            <ul>
+                <li data-key="{{key}}"><a href="#">{{key}}</a></li>
+            </ul>
+        {{/children}}
+        </li>
+    {{/block}}
 </script>
 <script src="http://seajs.org/dist/sea.js"></script>
 <script>
@@ -56,7 +66,12 @@
         seajs.use(["./js/timeline"], function(TL) {
             new TL({
                 "container": "#timeline",
-                "template": "#tl_block_tpl"
+                "navContainer": "#timeline-nav",
+                "blockTemplate": "#tl_block_tpl",
+                "unitTemplate": "#tl_unit_tpl",
+                "navTemplate": "#tl_navigator_tpl",
+                "orderBy": "month",
+                "imgWidth": 357
             })
         });
     })();
