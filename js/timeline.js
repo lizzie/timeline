@@ -140,7 +140,7 @@ define(function(require, exports, module) {
                 }
                 // adjust image width/height according to container width
                 var w, h, r, iW = self.get("imgWidth");
-                if (iW< d.img_width) {
+                if (iW < d.img_width) {
                     r = d.img_width/ d.img_height;
                     w = iW;
                     h = w/r;
@@ -237,7 +237,7 @@ define(function(require, exports, module) {
 
                 _.each(allHeader, function(a) {
                     var w = $($(a).attr("href"));
-                    if (w.length && w.offset().top-SCROLL_OFFSET<st) which = $(a);
+                    if (w.length && w.offset().top-SCROLL_OFFSET<=st) which = $(a);
                 });
                 navContainer.children("li").removeClass(select_cls);
                 which && which.parent("li").addClass(select_cls);
@@ -275,8 +275,6 @@ define(function(require, exports, module) {
                 $("body, html").animate({scrollTop: $(to).offset().top}, "slow");
             });
 
-            // spine
-            $("")
         },
         destory: function() {
 

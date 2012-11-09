@@ -7,7 +7,7 @@ define({
             "id": 1,
             "title": "发哥刚到家, 处女照!",
             "img_url": "http://cdntest.aliyun.com/faxianla/wood/m446030-1336448367052.jpg",
-            "img_width": 391,
+            "img_width": 491,
             "img_height": 821,
             "desc": "Greek Yogurt Cheesecake with Pomegranate Syrup",
             "datetime": new Date(2012, 4, 21)
