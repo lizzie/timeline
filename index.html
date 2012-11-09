@@ -1,87 +1,82 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
-
-  <title>Timeline</title>
-  <meta name="description" content="generate a facebook-like timeline page ">
-
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
+    <meta  charset="utf-8" />
+    <title>TimeLine</title>
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" href="css/timeline.css" />
 </head>
-
 <body>
-
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Timeline</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">generate a facebook-like timeline page </p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/lizzie/timeline/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/lizzie/timeline/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/lizzie/timeline" class="code">View Timeline on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </article>
-      </div>
+<div id="timeline" class="tl-container"></div>
+<ul class="tl-navigator" id="timeline-nav"></ul>
+<script id="tl_block_tpl" type="text/template">
+    {{#block}}
+    <div class="tl-block" id="tl-header-{{^month}}{{year}}{{/month}}{{#month}}{{month}}{{/month}}">
+        <div class="tl-hd"><h3>{{key}}</h3></div>
+        <ol class="tl-bd tl-clear">
+            <li aria-hidden="true" class="tl-spine"><a href="#"><i data-action="doAdd"></i></a></li>
+        </ol>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/lizzie" class="avatar"><img src="https://secure.gravatar.com/avatar/20ca616d6b152127511eeb206e2b9586?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/lizzie">lizzie</a> maintains <a href="https://github.com/lizzie/timeline">Timeline</a></p>
-
-
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/lizzie/timeline/tarball/master" class="tar">tar</a><a href="https://github.com/lizzie/timeline/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
-
-  
+    {{/block}}
+    {{^block}}
+    <div class="tl-block">
+        <div class="tl-ft tl-loading" data-action="doLike"></div>
+    </div>
+    {{/block}}
+</script>
+<script id="tl_unit_tpl" type="text/template">
+            <li class="tl-unit {{#_column}}tl-unit-{{_column}}{{/_column}}" data-id="{{id}}">
+                <div class="tl-unit-content tl-unit-custom">
+                    <!-- unit content custom START -->
+                    {{#title}}<p class="title">{{title}}</p>{{/title}}
+                    {{#img_url}}<p class="pic"><img src="{{img_url}}" style="width: {{_img_width}}px;height: {{_img_height}}px;" /></p>{{/img_url}}
+                    {{#desc}}<p class="desc">{{desc}}</p>{{/desc}}
+                    <p class="meta"><span data-action="doLike">喜欢</span><span class="dot">&dot;</span><span data-action="doComment">评论</span></p>
+                    <!-- unit content custom END -->
+                </div>
+                <b class="tl-unit-arrow"><i></i></b>
+                <b class="tl-unit-bullet"></b>
+            </li>
+            <!-- todo -->
+</script>
+<script id="tl_navigator_tpl" type="text/template">
+    {{#block}}
+        <li><a href="#tl-header-{{^month}}{{year}}{{/month}}{{#month}}{{month}}{{/month}}">{{key}}</a>
+        {{#children}}
+            <ul>
+                <li data-key="{{key}}"><a href="#">{{key}}</a></li>
+            </ul>
+        {{/children}}
+        </li>
+    {{/block}}
+</script>
+<script src="http://seajs.org/dist/sea.js"></script>
+<script>
+    (function() {
+        seajs.config({
+            base: "http://modules.seajs.org/",
+            alias: {
+                "$": "jquery/1.7.2/jquery",
+                "base": "base/0.9.16/base",
+                "mustache": "mustache/0.5.0/mustache",
+                "underscore": "underscore/1.3.3/underscore"
+            }
+        });
+        seajs.use(["./js/timeline"], function(TL) {
+            new TL({
+                "container": "#timeline",
+                "navContainer": "#timeline-nav",
+                "blockTemplate": "#tl_block_tpl",
+                "unitTemplate": "#tl_unit_tpl",
+                "navTemplate": "#tl_navigator_tpl",
+                "orderBy": "month",
+                "imgWidth": 357,
+                "dataUrl": "./zyh.js"
+            })
+        });
+    })();
+</script>
 </body>
 </html>
+
