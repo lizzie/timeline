@@ -176,39 +176,57 @@ define({
         },
         {
             "id": 20,
-            "title": "星星自己能站了",
-            "img_url": "http://ww2.sinaimg.cn/mw690/7745c6b3jw1dydgnneyyej.jpg",
-            "img_width": 640,
-            "img_height": 857,
-            "desc": "",
-            "datetime": new Date(2012, 10, 30)
-        },
-        {
-            "id": 21,
             "title": "大家排排凳坐好，星星北笔剥柚子啦…",
             "img_url": "http://ww3.sinaimg.cn/large/7745c6b3jw1dytm637w81j.jpg",
             "img_width": 1195,
-            "img_height": 1160,
+            "img_height": 1600,
             "desc": "",
             "datetime": new Date(2012, 11, 13)
         },
         {
-            "id": 22,
+            "id": 21,
             "title": "一切的一切不要那么计较就好了…",
             "img_url": "http://ww2.sinaimg.cn/large/7745c6b3jw1dz1eiod2ipj.jpg",
             "img_width": 1195,
-            "img_height": 1160,
+            "img_height": 1600,
             "desc": "",
             "datetime": new Date(2012, 11, 20)
         },
         {
-            "id": 23,
+            "id": 22,
             "title": "我的新帽子，哈哈",
             "img_url": "http://ww1.sinaimg.cn/large/7745c6b3jw1dzc0887orkj.jpg",
             "img_width": 640,
             "img_height": 896,
             "desc": "",
             "datetime": new Date(2012, 11, 29)
+        },
+        {
+            "id": 23,
+            "title": "转眼儿子已经7月半了，时间过得真快…",
+            "img_url": "http://ww3.sinaimg.cn/large/7745c6b3jw1dzgwrmvrzxj.jpg",
+            "img_width": 1195,
+            "img_height": 1600,
+            "desc": "",
+            "datetime": new Date(2012, 12, 3)
+        },
+        {
+            "id": 24,
+            "title": "这两个的眼睛，真是…",
+            "img_url": "http://ww2.sinaimg.cn/large/7745c6b3jw1dzhycv8vuxj.jpg",
+            "img_width": 1195,
+            "img_height": 1600,
+            "desc": "",
+            "datetime": new Date(2012, 12, 4)
+        },
+        {
+            "id": 25,
+            "title": "星星的平安夜，宝贝，希望你能健康长大，平安幸福，吧吧麻麻爱你forever",
+            "img_url": "http://ww1.sinaimg.cn/large/7745c6b3jw1e055niluqtj.jpg",
+            "img_width": 455,
+            "img_height": 640,
+            "desc": "",
+            "datetime": new Date(2012, 12, 24)
         }
     ]
 });
