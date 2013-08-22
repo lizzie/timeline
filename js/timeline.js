@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var $ = require("$"),
-        Mustache = require("mustache"),
+        Handlebars = require("handlebars"),
         _ = require("underscore"),
         Base = require("base"),
 
@@ -177,7 +177,7 @@ define(function(require, exports, module) {
                 v.key = v.year+DIMENSION["year"]+(v.month? v.month+DIMENSION["month"]:"");
                 ret.block.push(v);
             });
-            container.html(Mustache.render(self.get("blockTemplate"), ret));
+            container.html(Handlebars.compile(self.get("blockTemplate"))(ret));
 
             // no data or when loading
             if (!ret.block.length) return;
@@ -185,7 +185,7 @@ define(function(require, exports, module) {
             var navTpl = self.get("navTemplate"),
                 navContainer = self.get("navContainer");
             if (navTpl && navContainer) {
-                navContainer.html(Mustache.render(navTpl, ret));
+                navContainer.html(Handlebars.compile(navTpl)(ret));
             }
         },
         _renderUnit: function() {
@@ -207,7 +207,7 @@ define(function(require, exports, module) {
 
                     if (columnHeight.length>1) which = _.indexOf(columnHeight, _.min(columnHeight));
                     unit._column = which+1;
-                    el = $(Mustache.render(self.get("unitTemplate"), unit));
+                    el = $(Handlebars.compile(self.get("unitTemplate"))(unit));
                     blockContainer.append(el);
                     if (columnHeight.length>1) {
                         columnHeight[which] += el.height();
